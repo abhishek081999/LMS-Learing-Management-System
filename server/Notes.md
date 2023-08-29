@@ -1,1 +1,2 @@
 npm i bcryptjs cloudinary cookie-parser cors dotenv express jsonwebtoken mongoose multer nodemailer --save
+morgan-- save

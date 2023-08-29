@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import {config} from 'dotenv'
+import morgan from 'morgan';
 config();
 const app = express();
 app.use(express.json())  //body pars middleware
@@ -11,6 +12,8 @@ app.use(cors({
 }));
 
 app.use(cookieParser())
+
+app.use(morgan('dev')); // combined common dev  short  tiny 
 
 app.use('/ping', function(req,res){
     res.send('/pong');
