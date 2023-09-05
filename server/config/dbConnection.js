@@ -8,7 +8,8 @@ const connectionToDB = async () => {
             process.env.MONGO_URI || `mongodb://127.0.0.1:27017/lms`,
           
         );
-    
+        
+
         if (connection) {
             console.log(`Connected to MongoDB: ${connection.host}`);
         }
@@ -19,3 +20,5 @@ const connectionToDB = async () => {
 }
 
 export default connectionToDB;
+
+// MONGO_URI = mongodb+srv://AbhishekKumar:bhoranj@cluster0.2yyze.mongodb.net/lms
