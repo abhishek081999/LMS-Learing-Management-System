@@ -3,17 +3,16 @@ import { model, Schema } from "mongoose";
 const courseSchema = new Schema({
     title: {
         type: String,
-        unique: true,
         required: [true, 'Title is required'],
-        minLength: [8, 'Title must be at least 8 character'],
-        maxLength: [59, 'Title should be less than 60 character'],
-        trim: true
+        minLength: [8, 'Title must be atleast 8 characters'],
+        maxLength: [59, 'Title should be less than 60 characters'],
+        trim: true,
     },
     description: {
         type: String,
-        required: true,
-        minLength: [8, 'Description must be at least 8 character'],
-        maxLength: [500, 'Description should be less than 500 character'],
+        required: [true, 'Description is required'],
+        minLength: [8, 'Description must be atleast 8 characters'],
+        maxLength: [200, 'Description should be less than 200 characters'],
     },
     category: {
         type: String,
@@ -21,10 +20,12 @@ const courseSchema = new Schema({
     },
     thumbnail: {
         public_id: {
-            type: String
+            type: String,
+            required: true
         },
         secure_url: {
-            type: String
+            type: String,
+            required: true
         }
     },
     lectures: [
@@ -33,27 +34,28 @@ const courseSchema = new Schema({
             description: String,
             lecture: {
                 public_id: {
-                    type: String 
+                    type: String,
+                    required: true
                 },
                 secure_url: {
-                    type: String
+                    type: String,
+                    required: true
                 }
             }
         }
     ],
-    numberOfLectures: {
+    numbersOfLectures: {
         type: Number,
-        default: 0
+        default: 0,
     },
     createdBy: {
         type: String,
-        required: true,
+        required: true
     }
-},
-    {
-        timestamps: true
-    })
+}, {
+    timestamps: true
+});
 
-const Course = model("Course", courseSchema);
+const Course = model('Course', courseSchema);
 
-export default Course
+export default Course;
